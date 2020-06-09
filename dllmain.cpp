@@ -75,8 +75,8 @@ void Main() {
 	auto easy_find = FindPattern(CurlEasySetOptPattern, 0x20);
 	auto set_find = FindPattern(CurlSetOptPattern, 0x1c);
 
-	curl_easy_setopt = (CURLcode(*)(struct Curl_easy*, CURLoption, ...))easy_find;
-	curl_setopt = (CURLcode(*)(struct Curl_easy*, CURLoption, va_list))set_find;
+	curl_easy_setopt = (decltype(curl_easy_setopt))easy_find;
+	curl_setopt = (decltype(curl_setopt))set_find;
 
 	EnableHook(curl_easy_setopt, curl_easy_setopt_detour);
 }
