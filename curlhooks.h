@@ -3,8 +3,10 @@
 #include "url.h"
 
 // Pick your poison
+#define URL_HOST "v2.fortnite.dev"
+//#define URL_HOST "aurorafn.dev"
 
-#define URL_HOST "v2.fortnite.dev" // "aurorafn.dev"
+//#define LOG_URLS
 
 CURLcode(*curl_setopt)(struct Curl_easy*, CURLoption, va_list) = nullptr;
 CURLcode(*curl_easy_setopt)(struct Curl_easy*, CURLoption, ...) = nullptr;
@@ -44,7 +46,9 @@ CURLcode curl_easy_setopt_detour(struct Curl_easy* data, CURLoption tag, ...) {
             url.append(length - url.length(), ' '); // buffer size checking can occur
         }
 
-        printf("curl_easy_setopt: tag = %i, url = %s\n", tag, url.c_str());
+#ifdef LOG_URLS
+        printf("Url logged: %s\n", tag, url.c_str());
+#endif
 
         result = curl_setopt_(data, tag, url.c_str());
     }
