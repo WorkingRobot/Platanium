@@ -1,9 +1,3 @@
-# Platanium
-
-Just inject the DLL and set the host you wanna use.
-
-## License
-
 [![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png)](http://creativecommons.org/publicdomain/zero/1.0/)
 
 To the extent possible under law, [Aleks Margarian](https://github.com/WorkingRobot/Platanium) has waived all copyright and related or neighboring rights to Platanium. This work is published from: United States.
