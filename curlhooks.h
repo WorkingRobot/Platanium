@@ -33,19 +33,6 @@ CURLcode curl_easy_setopt_detour(struct Curl_easy* data, CURLoption tag, ...) {
     if (tag == CURLOPT_SSL_VERIFYPEER) {
         result = curl_setopt_(data, tag, 0);
     }
-    else if (tag == CURLOPT_URL) {
-        char* url = va_arg(arg, char*);
-        if (!memcmp(url, "https", 5)) {
-            url[1] = 'h';
-            url[2] = 't';
-            url[3] = 't';
-            url[4] = 'p';
-            url++;
-        }
-        printf("URL: %s\n", url);
-        result = curl_setopt_(data, CURLOPT_SSL_VERIFYPEER, 0);
-        result = curl_setopt_(data, tag, url);
-    }
 #ifdef URL_HOST
     else if (tag == CURLOPT_URL) {
         std::string url = va_arg(arg, char*);
